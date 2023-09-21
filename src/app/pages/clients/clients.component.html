@@ -1,1 +1,32 @@
-<p>clients works!</p>
+<h1 class="display-6">Clientes</h1>
+<hr>
+<a class="btn btn-dark" routerLink="/clients/register">Novo</a>
+<table class="table table-light table-striped table-bordered mt-3 p-0">
+  <thead>
+    <tr scope="row">
+      <th scope="col col-md-8">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Tel.</th>
+      <th scope="col">Rua</th>
+      <th scope="col">Num.</th>
+      <th scope="col">CEP</th>
+      <th scope="col">Rend. Mensal</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients" scope="row">
+      <th scope="row  col-md-8">{{ client.nome }}</th>
+      <td scope="col">{{ client.cpf }}</td>
+      <td scope="col">{{ client.telefone }}</td>
+      <td scope="col">{{ client.rua }}</td>
+      <td scope="col">{{ client.numero }}</td>
+      <td scope="col">{{ client.cep }}</td>
+      <td scope="col">{{ client.rendimentoMensal | currency: 'BRL'}}</td>
+      <td scope="col">
+        <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button>
+        <!-- <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

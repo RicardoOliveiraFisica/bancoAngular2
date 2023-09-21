@@ -8,6 +8,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { LoansComponent } from './pages/loans/loans.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoansComponent } from './pages/loans/loans.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

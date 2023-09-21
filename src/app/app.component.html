@@ -1,13 +1,12 @@
-
-
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <h1>Aplicativo de Empréstimo Bancário</h1>
-      <app-button></app-button>
-      <app-button size="sm" [disabled]="true"></app-button>
-      <app-button color="primary" size="lg"></app-button>
+   <div class="row">
+    <div class="col col-sm p-1">
+      <app-navebar></app-navebar>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col row-auto p-1">
       <router-outlet></router-outlet>
-    </div>
+     </div>
   </div>
 </div>

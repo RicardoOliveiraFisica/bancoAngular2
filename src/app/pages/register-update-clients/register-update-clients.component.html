@@ -1,0 +1,68 @@
+<!-- <h1 class="display-6">{{typeCrud == 'edit' ? 'Atualização' : 'Cadastro'}} de Cliente</h1> -->
+<div> {{clientForm.value | json}} </div>
+<hr>
+<div class="container-fluid">
+  <!-- <form [formGroup]="clientForm" (ngSubmit)="registerOrUpdate()"> -->
+  <form [formGroup]="clientForm" (ngSubmit)="register()">
+    <div class="row">
+      <div class="col">
+        <div class="mb-12">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" aria-describedby="nameHelp" formControlName="nome">
+          <div id="nameHelp" class="form-text">Nome completo</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control cpf-mask" id="cpf" aria-describedby="cpfHelp" formControlName="cpf" mask="000.000.000-00">
+          <div id="cpfHelp" class="form-text">Digite um CPF válido</div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Tel.</label>
+          <input type="text" class="form-control" id="telefone" aria-describedby="telHelp" formControlName="telefone">
+          <div id="telHelp" class="form-text">Num. de telefone</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="rendimentoMensal" class="form-label">Rend. Mensal</label>
+          <input type="number" class="form-control" id="rendimentoMensal" aria-describedby="rendMensalHelp" formControlName="rendimentoMensal">
+          <div id="rendMensalHelp" class="form-text">Rendimento Mensal</div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-3">
+        <div class="mb-">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" aria-describedby="cepHelp" formControlName="cep">
+          <div id="cepHelp" class="form-text">CEP</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="rua" class="form-label">Rua</label>
+          <input type="text" class="form-control" id="rua" aria-describedby="ruaHelp" formControlName="rua">
+          <div id="ruaHelp" class="form-text">Logradouro</div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="mb-3">
+          <label for="numero" class="form-label">Num</label>
+          <input type="number" class="form-control" id="numero" aria-describedby="numHelp" formControlName="numero">
+          <div id="numHelp" class="form-text">Numero</div>
+        </div>
+      </div>
+    </div>
+    <!-- <button type="submit" class="btn btn-dark" [disabled]="!clientForm.valid">{{typeCrud == 'edit' ? 'Atualizar' : 'Cadastrar'}}</button> -->
+    <button type="submit" class="btn btn-dark" [disabled]="!clientForm.valid">Cadastrar</button>
+  </form>
+</div>

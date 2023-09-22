@@ -1,9 +1,7 @@
-<!-- <h1 class="display-6">{{typeCrud == 'edit' ? 'Atualização' : 'Cadastro'}} de Cliente</h1> -->
-<div> {{clientForm.value | json}} </div>
+<h1 class="display-6">{{typeCrud == 'edit' ? 'Atualização' : 'Cadastro'}} de Cliente</h1>
 <hr>
 <div class="container-fluid">
-  <!-- <form [formGroup]="clientForm" (ngSubmit)="registerOrUpdate()"> -->
-  <form [formGroup]="clientForm" (ngSubmit)="register()">
+  <form [formGroup]="clientForm" (ngSubmit)="registerOrUpdate()">
     <div class="row">
       <div class="col">
         <div class="mb-12">
@@ -62,7 +60,6 @@
         </div>
       </div>
     </div>
-    <!-- <button type="submit" class="btn btn-dark" [disabled]="!clientForm.valid">{{typeCrud == 'edit' ? 'Atualizar' : 'Cadastrar'}}</button> -->
-    <button type="submit" class="btn btn-dark" [disabled]="!clientForm.valid">Cadastrar</button>
+    <button type="submit" class="btn btn-dark" [disabled]="!clientForm.valid">{{typeCrud == 'edit' ? 'Atualizar' : 'Cadastrar'}}</button>
   </form>
 </div>

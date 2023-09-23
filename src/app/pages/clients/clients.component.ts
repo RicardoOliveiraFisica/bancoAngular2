@@ -20,24 +20,38 @@ export class ClientsComponent {
   }
 
   delete(cpf: string) {
-  //  const cpf = this.route.snapshot.paramMap.get('cpf');
     if (cpf) {
-      this.clientsService.deletarClientePeloCpf(cpf).subscribe(result => {
-        Swal.fire(
-          'Deletado!',
-          'Cadastro deletado com sucesso!',
-          'success'
-        )
-      }, error => {
-        console.error(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Cadastro não deletado!',
-          footer: (error.error.errors ? error.error.errors[0].defaultMessage : error.error.message)
-        })
-      });
+      Swal.fire({
+        title: 'Você deseja excluir esse cadastro?',
+        text: "Esse processo é irreversível!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, exclua-o!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.clientsService.deletarClientePeloCpf(cpf).subscribe(result => {
+            Swal.fire(
+              'Deletado!',
+              'Cadastro deletado com sucesso!',
+              'success'
+            );
+           // this.ngOnInit();
+           window.location.reload();
+          }, error => {
+            console.error(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Cadastro não deletado!',
+              footer: (error.error.errors ? error.error.errors[0].defaultMessage : error.error.message)
+            })
+          });
+        }
+      })
     }
   }
+
 
 }

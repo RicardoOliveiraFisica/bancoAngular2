@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'loans', component: LoansComponent },
   { path: 'clients/register', component: RegisterUpdateClientsComponent },
   { path: 'clients/edit/:cpf', component: RegisterUpdateClientsComponent },
+  { path: "clients/delete/:cpf", component: ClientsComponent },
   { path: "", redirectTo: "home", pathMatch: "full"}
 ];
 

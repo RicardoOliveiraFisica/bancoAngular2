@@ -25,7 +25,7 @@
       <td scope="col">{{ client.rendimentoMensal | currency: 'BRL'}}</td>
       <td scope="col">
         <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button>
-        <!-- <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button> -->
+        <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button>
       </td>
     </tr>
   </tbody>

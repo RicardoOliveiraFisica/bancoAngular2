@@ -9,4 +9,5 @@ export class ButtonComponent {
   @Input() color: string = 'dark';
   @Input() size: string = '';
   @Input() disabled: boolean = false;
+  @Input() label: string = '';
 }

@@ -1,6 +1,6 @@
 <h1 class="display-6">Clientes</h1>
 <hr>
-<a class="btn btn-dark" routerLink="/clients/register">Novo</a>
+<a class="btn btn-dark" routerLink="/clients/create">Novo</a>
 <table class="table table-light table-striped table-bordered mt-3 p-0">
   <thead>
     <tr scope="row">
@@ -25,6 +25,8 @@
       <td scope="col">{{ client.rendimentoMensal | currency: 'BRL'}}</td>
       <td scope="col">
         <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button>
+
+        <!-- <app-button label="Deletar" [routerLink]="['/clients/delete/', client.cpf]"></app-button> -->
         <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button>
       </td>
     </tr>

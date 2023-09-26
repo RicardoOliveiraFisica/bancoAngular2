@@ -69,6 +69,7 @@ export class RegisterUpdateClientsComponent {
         'Cadastro realizado com sucesso!',
         'success'
       );
+      this.router.navigate(['/clients']);
 
     }, error => {
       console.error(error);

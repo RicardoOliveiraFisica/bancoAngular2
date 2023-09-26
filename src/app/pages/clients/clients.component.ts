@@ -37,8 +37,8 @@ export class ClientsComponent {
               'Cadastro deletado com sucesso!',
               'success'
             );
-           // this.ngOnInit();
-           window.location.reload();
+            this.ngOnInit();
+           //window.location.reload();
           }, error => {
             console.error(error);
             Swal.fire({

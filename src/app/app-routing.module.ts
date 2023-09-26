@@ -9,9 +9,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'loans', component: LoansComponent },
-  { path: 'clients/register', component: RegisterUpdateClientsComponent },
+  { path: 'clients/create', component: RegisterUpdateClientsComponent },
   { path: 'clients/edit/:cpf', component: RegisterUpdateClientsComponent },
-  { path: "clients/delete/:cpf", component: ClientsComponent },
+  /* { path: "clients/delete/:cpf", component: ClientsComponent }, */
   { path: "", redirectTo: "home", pathMatch: "full"}
 ];
 

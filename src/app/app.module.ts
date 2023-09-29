@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { CpfPipe } from './services/pipe/cpf.pipe';
+import { TelephonePipe } from './services/pipe/telephone.pipe';
 
 registerLocaleData(ptBr);
 
@@ -25,7 +27,9 @@ registerLocaleData(ptBr);
     HomeComponent,
     ClientsComponent,
     LoansComponent,
-    RegisterUpdateClientsComponent
+    RegisterUpdateClientsComponent,
+    CpfPipe,
+    TelephonePipe,
   ],
   imports: [
     BrowserModule,

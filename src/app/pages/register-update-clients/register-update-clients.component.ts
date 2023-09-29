@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IClient } from 'src/app/interfaces/client';
 import { ClientsService } from 'src/app/services/clients.service';
+import { CpfMask } from 'src/app/services/mask/cpf.mask';
+import { CpfPipe } from 'src/app/services/pipe/cpf.pipe';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +16,9 @@ export class RegisterUpdateClientsComponent {
 
   clientForm = new FormGroup({
     nome: new FormControl('', Validators.required),
-    cpf: new FormControl('', Validators.required),
+    cpf: new FormControl('',
+      Validators.compose([
+        Validators.required])),
     telefone: new FormControl('', Validators.required),
     rua: new FormControl('', Validators.required),
     numero: new FormControl(0, Validators.required),
@@ -22,18 +26,28 @@ export class RegisterUpdateClientsComponent {
     rendimentoMensal: new FormControl(1.00, Validators.required)
   });
 
-  constructor(private clientsService: ClientsService, private route: ActivatedRoute, private router: Router) {}
+
+  constructor(private clientsService: ClientsService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private cpfMask: CpfMask,
+              private cpfPipe: CpfPipe
+  ) {}
+
   typeCrud = 'register';
+ // private cpfMask = new CpfMask();
+ // private cpfPipe = new CpfPipe();
 
   ngOnInit() {
     const cpf = this.route.snapshot.paramMap.get('cpf');
+
     if (cpf) {
       this.typeCrud = 'edit';
       this.clientsService.buscarClientePorCpf(cpf).subscribe((client: IClient) => {
         this.clientForm.setValue({
           nome: client.nome || '',
-          cpf: client.cpf || '',
-          telefone: client.cpf || '',
+          cpf: /* client.cpf || '', // */this.cpfPipe.transform(client.cpf) || '',
+          telefone: client.telefone || '',
           rua: client.rua || '',
           numero: client.numero || 0,
           cep: client.cep || '',
@@ -101,5 +115,11 @@ export class RegisterUpdateClientsComponent {
         footer: (error.error.errors ? error.error.errors[0].defaultMessage : error.error.message)
       })
     });
+  }
+
+  getCpfMask() {
+    const value = this.clientForm.get('cpf')?.value;
+    let valorFormatado = this.cpfMask.mask(value + '');
+    this.clientForm.get('cpf')?.setValue(valorFormatado);
   }
 }

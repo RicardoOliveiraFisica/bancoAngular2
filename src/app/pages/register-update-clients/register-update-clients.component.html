@@ -15,7 +15,7 @@
       <div class="col-3">
         <div class="mb-3">
           <label for="cpf" class="form-label">CPF</label>
-          <input type="text" class="form-control cpf-mask" id="cpf" aria-describedby="cpfHelp" formControlName="cpf" mask="000.000.000-00">
+          <input type="text" class="form-control cpf-mask" id="cpf" aria-describedby="cpfHelp" (keyup)="getCpfMask()" formControlName="cpf" >
           <div id="cpfHelp" class="form-text">Digite um CPF válido</div>
         </div>
       </div>

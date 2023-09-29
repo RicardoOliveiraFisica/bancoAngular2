@@ -1,7 +1,7 @@
 export interface IClient {
   nome: string,
   cpf: string,
-  telefone?: string,
+  telefone: string,
   rua: string,
   numero?: number,
   cep: string,

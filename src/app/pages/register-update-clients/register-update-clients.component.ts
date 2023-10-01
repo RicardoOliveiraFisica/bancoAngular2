@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IClient } from 'src/app/interfaces/client';
 import { ClientsService } from 'src/app/services/clients.service';
 import { CpfMask } from 'src/app/services/mask/cpf.mask';
+import { TelephoneMask } from 'src/app/services/mask/telephone.mask';
 import { CpfPipe } from 'src/app/services/pipe/cpf.pipe';
+import { TelephonePipe } from 'src/app/services/pipe/telephone.pipe';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -31,7 +33,9 @@ export class RegisterUpdateClientsComponent {
               private route: ActivatedRoute,
               private router: Router,
               private cpfMask: CpfMask,
-              private cpfPipe: CpfPipe
+              private telephoneMask: TelephoneMask,
+              private cpfPipe: CpfPipe,
+              private telePhonePipe: TelephonePipe
   ) {}
 
   typeCrud = 'register';
@@ -47,7 +51,7 @@ export class RegisterUpdateClientsComponent {
         this.clientForm.setValue({
           nome: client.nome || '',
           cpf: /* client.cpf || '', // */this.cpfPipe.transform(client.cpf) || '',
-          telefone: client.telefone || '',
+          telefone: this.telePhonePipe.transform(client.telefone) || '',
           rua: client.rua || '',
           numero: client.numero || 0,
           cep: client.cep || '',
@@ -121,5 +125,11 @@ export class RegisterUpdateClientsComponent {
     const value = this.clientForm.get('cpf')?.value;
     let valorFormatado = this.cpfMask.mask(value + '');
     this.clientForm.get('cpf')?.setValue(valorFormatado);
+  }
+
+  getTelephoneMask() {
+    const value = this.clientForm.get('telefone')?.value;
+    let valorFormatado = this.telephoneMask.mask(value + '');
+    this.clientForm.get('telefone')?.setValue(valorFormatado);
   }
 }

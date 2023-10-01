@@ -22,7 +22,7 @@
       <div class="col-3">
         <div class="mb-3">
           <label for="telefone" class="form-label">Tel.</label>
-          <input type="text" class="form-control" id="telefone" aria-describedby="telHelp" formControlName="telefone">
+          <input type="text" class="form-control" id="telefone" aria-describedby="telHelp" (keyup)="getTelephoneMask()" formControlName="telefone">
           <div id="telHelp" class="form-text">Num. de telefone</div>
         </div>
       </div>

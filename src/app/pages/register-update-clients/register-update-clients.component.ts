@@ -71,6 +71,10 @@ export class RegisterUpdateClientsComponent {
 
   registerOrUpdate() {
     const cpf = this.route.snapshot.paramMap.get('cpf');
+    const cpfNaoFormatado = this.clientForm.get('cpf')?.value;
+    this.clientForm.get('cpf')?.setValue(cpfNaoFormatado?.replace(/\D/g,'') + '');
+    const telephoneNaoFormatado = this.clientForm.get('telefone')?.value;
+    this.clientForm.get('telefone')?.setValue(telephoneNaoFormatado?.replace(/\D/g,'') + '');
     if (cpf) {
       this.update(cpf);
      }

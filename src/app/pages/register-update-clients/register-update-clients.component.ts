@@ -50,13 +50,14 @@ export class RegisterUpdateClientsComponent {
       this.clientsService.buscarClientePorCpf(cpf).subscribe((client: IClient) => {
         this.clientForm.setValue({
           nome: client.nome || '',
-          cpf: /* client.cpf || '', // */this.cpfPipe.transform(client.cpf) || '',
+          cpf: this.cpfPipe.transform(client.cpf) || '',
           telefone: this.telePhonePipe.transform(client.telefone) || '',
           rua: client.rua || '',
           numero: client.numero || 0,
           cep: client.cep || '',
           rendimentoMensal: client.rendimentoMensal || 1.00
         });
+        this.clientForm.get('cpf')?.disable();
       }, error => {
         console.error(error);
         Swal.fire({
@@ -105,7 +106,8 @@ export class RegisterUpdateClientsComponent {
   }
 
   update(cpf: string) {
-    const client: IClient = this.clientForm.value as IClient;
+   // const client: IClient = this.clientForm.value as IClient; //nao pega campo cpf desabilitado
+    const client: IClient = this.clientForm.getRawValue() as IClient; //pega campo cpf desabilitado
     this.clientsService.atualizarClientePeloCpf(cpf, client).subscribe(result => {
       Swal.fire(
         'Atualizado!',

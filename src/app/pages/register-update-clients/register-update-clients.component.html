@@ -6,8 +6,12 @@
       <div class="col">
         <div class="mb-12">
           <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" aria-describedby="nameHelp" formControlName="nome">
-          <div id="nameHelp" class="form-text">Nome completo</div>
+          <input type="text" class="form-control" id="nome" aria-describedby="nameHelp" formControlName="nome" placeholder="Nome completo">
+          <ng-container *ngIf="clientForm.controls.nome.touched">
+            <span *ngIf="clientForm.controls.nome.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -15,23 +19,35 @@
       <div class="col-3">
         <div class="mb-3">
           <label for="cpf" class="form-label">CPF</label>
-          <input type="text" class="form-control cpf-mask" id="cpf" aria-describedby="cpfHelp" (keyup)="getCpfMask()" formControlName="cpf" >
-          <div id="cpfHelp" class="form-text">Digite um CPF válido</div>
-        </div>
+          <input type="text" class="form-control cpf-mask" id="cpf" aria-describedby="cpfHelp" (keyup)="getCpfMask()" formControlName="cpf" placeholder="Digite um CPF válido">
+          <ng-container *ngIf="clientForm.controls.cpf.touched">
+            <span *ngIf="clientForm.controls.cpf.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
+         </div>
       </div>
       <div class="col-3">
         <div class="mb-3">
           <label for="telefone" class="form-label">Tel.</label>
-          <input type="text" class="form-control" id="telefone" aria-describedby="telHelp" (keyup)="getTelephoneMask()" formControlName="telefone">
-          <div id="telHelp" class="form-text">Num. de telefone</div>
-        </div>
+          <input type="text" class="form-control" id="telefone" aria-describedby="telHelp" (keyup)="getTelephoneMask()" formControlName="telefone" placeholder="(00) 00000-0000">
+          <ng-container *ngIf="clientForm.controls.telefone.touched">
+            <span *ngIf="clientForm.controls.telefone.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
+         </div>
       </div>
       <div class="col">
         <div class="mb-3">
           <label for="rendimentoMensal" class="form-label">Rend. Mensal</label>
-          <input type="number" class="form-control" id="rendimentoMensal" aria-describedby="rendMensalHelp" formControlName="rendimentoMensal">
-          <div id="rendMensalHelp" class="form-text">Rendimento Mensal</div>
-        </div>
+          <input type="number" class="form-control" id="rendimentoMensal" aria-describedby="rendMensalHelp" formControlName="rendimentoMensal" placeholder="R$ 0,00">
+          <ng-container *ngIf="clientForm.controls.rendimentoMensal.touched">
+            <span *ngIf="clientForm.controls.rendimentoMensal.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+        </ng-container>
+         </div>
       </div>
     </div>
     <hr>
@@ -40,7 +56,11 @@
         <div class="mb-">
           <label for="cep" class="form-label">CEP</label>
           <input type="text" class="form-control" id="cep" aria-describedby="cepHelp" formControlName="cep">
-          <div id="cepHelp" class="form-text">CEP</div>
+          <ng-container *ngIf="clientForm.controls.cep.touched">
+            <span *ngIf="clientForm.controls.cep.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -48,15 +68,23 @@
       <div class="col">
         <div class="mb-3">
           <label for="rua" class="form-label">Rua</label>
-          <input type="text" class="form-control" id="rua" aria-describedby="ruaHelp" formControlName="rua">
-          <div id="ruaHelp" class="form-text">Logradouro</div>
+          <input type="text" class="form-control" id="rua" aria-describedby="ruaHelp" formControlName="rua" placeholder="Logradouro">
+          <ng-container *ngIf="clientForm.controls.rua.touched">
+            <span *ngIf="clientForm.controls.rua.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
         </div>
       </div>
       <div class="col-2">
         <div class="mb-3">
           <label for="numero" class="form-label">Num</label>
-          <input type="number" class="form-control" id="numero" aria-describedby="numHelp" formControlName="numero">
-          <div id="numHelp" class="form-text">Numero</div>
+          <input type="number" class="form-control" id="numero" aria-describedby="numHelp" formControlName="numero" placeholder="Numero">
+          <ng-container *ngIf="clientForm.controls.numero.touched">
+            <span *ngIf="clientForm.controls.numero.errors" class="mgs-alert">
+                Campo obrigatório
+            </span>
+          </ng-container>
         </div>
       </div>
     </div>

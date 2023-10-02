@@ -18,9 +18,7 @@ export class RegisterUpdateClientsComponent {
 
   clientForm = new FormGroup({
     nome: new FormControl('', Validators.required),
-    cpf: new FormControl('',
-      Validators.compose([
-        Validators.required])),
+    cpf: new FormControl('', Validators.required),
     telefone: new FormControl('', Validators.required),
     rua: new FormControl('', Validators.required),
     numero: new FormControl(0, Validators.required),

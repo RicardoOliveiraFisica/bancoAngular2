@@ -6,10 +6,12 @@ import { IClient } from 'src/app/interfaces/client';
 import { CepService } from 'src/app/services/cep.service';
 import { ClientsService } from 'src/app/services/clients.service';
 import { CpfMask } from 'src/app/services/mask/cpf.mask';
+import { CepMask } from 'src/app/services/mask/cep.mask';
 import { TelephoneMask } from 'src/app/services/mask/telephone.mask';
 import { CpfPipe } from 'src/app/services/pipe/cpf.pipe';
 import { TelephonePipe } from 'src/app/services/pipe/telephone.pipe';
 import Swal from 'sweetalert2';
+import { CepPipe } from 'src/app/services/pipe/cep.pipe';
 
 @Component({
   selector: 'app-register-update-clients',
@@ -25,6 +27,7 @@ export class RegisterUpdateClientsComponent {
     rua: new FormControl('', Validators.required),
     numero: new FormControl(0, Validators.required),
     cep: new FormControl('', Validators.required),
+    cidade: new FormControl(''),
     rendimentoMensal: new FormControl(1.00, Validators.required)
   });
 
@@ -33,8 +36,10 @@ export class RegisterUpdateClientsComponent {
               private route: ActivatedRoute,
               private router: Router,
               private cpfMask: CpfMask,
+              private cepMask: CepMask,
               private telephoneMask: TelephoneMask,
               private cpfPipe: CpfPipe,
+              private cepPipe: CepPipe,
               private telePhonePipe: TelephonePipe,
               private cepService: CepService
   ) {}
@@ -55,10 +60,12 @@ export class RegisterUpdateClientsComponent {
           telefone: this.telePhonePipe.transform(client.telefone) || '',
           rua: client.rua || '',
           numero: client.numero || 0,
-          cep: client.cep || '',
+          cep: this.cepPipe.transform(client.cep) || '',
+          cidade: '',
           rendimentoMensal: client.rendimentoMensal || 1.00
         });
         this.clientForm.get('cpf')?.disable();
+        this.consultaCep();
       }, error => {
         console.error(error);
         Swal.fire({
@@ -134,6 +141,12 @@ export class RegisterUpdateClientsComponent {
     this.clientForm.get('cpf')?.setValue(valorFormatado);
   }
 
+  getCepMask() {
+    const value = this.clientForm.get('cep')?.value;
+    let valorFormatado = this.cepMask.mask(value + '');
+    this.clientForm.get('cep')?.setValue(valorFormatado);
+  }
+
   getTelephoneMask() {
     const value = this.clientForm.get('telefone')?.value;
     let valorFormatado = this.telephoneMask.mask(value + '');
@@ -141,9 +154,10 @@ export class RegisterUpdateClientsComponent {
   }
 
   consultaCep() {
-    const valor = this.clientForm.get('cep')?.value;
-    this.cepService.buscar(valor + '').subscribe( (cep: ICep) => {
-      this.clientForm.get('rua')?.setValue(cep.logradouro + '');
+    const cep = this.clientForm.get('cep')?.value + '';
+    this.cepService.buscar(cep).subscribe( (info: ICep) => {
+      this.clientForm.get('cidade')?.setValue(info.localidade + '');
+      this.clientForm.get('rua')?.setValue(info.logradouro + '');
     });
   }
 

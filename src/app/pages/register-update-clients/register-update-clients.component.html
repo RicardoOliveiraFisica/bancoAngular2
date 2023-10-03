@@ -55,12 +55,18 @@
       <div class="col-3">
         <div class="mb-">
           <label for="cep" class="form-label">CEP</label>
-          <input type="text" class="form-control" id="cep" aria-describedby="cepHelp" formControlName="cep" (blur)="consultaCep()">
+          <input type="text" class="form-control" id="cep" aria-describedby="cepHelp" (keyup)="getCepMask()" formControlName="cep" (blur)="consultaCep()">
           <ng-container *ngIf="clientForm.controls.cep.touched">
             <span *ngIf="clientForm.controls.cep.errors" class="mgs-alert">
                 Campo obrigatório
             </span>
           </ng-container>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-">
+          <label for="cep" class="form-label">CIDADE</label>
+          <input type="text" class="form-control" id="cidae" formControlName="cidade">
         </div>
       </div>
     </div>

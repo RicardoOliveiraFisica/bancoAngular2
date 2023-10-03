@@ -5,5 +5,6 @@ export interface IClient {
   rua: string,
   numero?: number,
   cep: string,
+  cidade: string,
   rendimentoMensal: number
 }

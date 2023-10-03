@@ -21,7 +21,7 @@
       <td scope="col">{{ client.telefone | telephone }}</td>
       <td scope="col">{{ client.rua }}</td>
       <td scope="col">{{ client.numero }}</td>
-      <td scope="col">{{ client.cep }}</td>
+      <td scope="col">{{ client.cep | cep }}</td>
       <td scope="col">{{ client.rendimentoMensal | currency: 'BRL'}}</td>
       <td scope="col">
         <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button>

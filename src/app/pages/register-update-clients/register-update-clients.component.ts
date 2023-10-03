@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ICep } from 'src/app/interfaces/cep';
 import { IClient } from 'src/app/interfaces/client';
+import { CepService } from 'src/app/services/cep.service';
 import { ClientsService } from 'src/app/services/clients.service';
 import { CpfMask } from 'src/app/services/mask/cpf.mask';
 import { TelephoneMask } from 'src/app/services/mask/telephone.mask';
@@ -33,7 +35,8 @@ export class RegisterUpdateClientsComponent {
               private cpfMask: CpfMask,
               private telephoneMask: TelephoneMask,
               private cpfPipe: CpfPipe,
-              private telePhonePipe: TelephonePipe
+              private telePhonePipe: TelephonePipe,
+              private cepService: CepService
   ) {}
 
   typeCrud = 'register';
@@ -136,4 +139,12 @@ export class RegisterUpdateClientsComponent {
     let valorFormatado = this.telephoneMask.mask(value + '');
     this.clientForm.get('telefone')?.setValue(valorFormatado);
   }
+
+  consultaCep() {
+    const valor = this.clientForm.get('cep')?.value;
+    this.cepService.buscar(valor + '').subscribe( (cep: ICep) => {
+      this.clientForm.get('rua')?.setValue(cep.logradouro + '');
+    });
+  }
+
 }

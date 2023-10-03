@@ -16,6 +16,7 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CpfPipe } from './services/pipe/cpf.pipe';
 import { TelephonePipe } from './services/pipe/telephone.pipe';
+import { CepPipe } from './services/pipe/cep.pipe';
 
 registerLocaleData(ptBr);
 
@@ -30,6 +31,7 @@ registerLocaleData(ptBr);
     RegisterUpdateClientsComponent,
     CpfPipe,
     TelephonePipe,
+    CepPipe
   ],
   imports: [
     BrowserModule,

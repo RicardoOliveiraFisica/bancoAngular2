@@ -24,10 +24,11 @@
       <td scope="col">{{ client.cep | cep }}</td>
       <td scope="col">{{ client.rendimentoMensal | currency: 'BRL'}}</td>
       <td scope="col">
-        <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button>
-
+        <!-- <app-button label="Editar" [routerLink]="['/clients/edit/', client.cpf]"></app-button> -->
         <!-- <app-button label="Deletar" [routerLink]="['/clients/delete/', client.cpf]"></app-button> -->
-        <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button>
+        <!-- <app-button label="Deletar" color="danger" (click)="delete(client.cpf)"></app-button> -->
+        <app-icon icon="edit_note" [routerLink]="['/clients/edit/', client.cpf]" title="Editar cadastro"></app-icon>
+        <app-icon icon="delete_outline" (click)="delete(client.cpf)" title="Excluir cadastro"></app-icon>
       </td>
     </tr>
   </tbody>

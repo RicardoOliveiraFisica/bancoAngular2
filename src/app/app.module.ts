@@ -17,6 +17,9 @@ import { registerLocaleData } from '@angular/common';
 import { CpfPipe } from './services/pipe/cpf.pipe';
 import { TelephonePipe } from './services/pipe/telephone.pipe';
 import { CepPipe } from './services/pipe/cep.pipe';
+import { IconComponent } from './components/icon/icon.component';
+
+import {MatIconModule} from '@angular/material/icon';
 
 registerLocaleData(ptBr);
 
@@ -31,13 +34,15 @@ registerLocaleData(ptBr);
     RegisterUpdateClientsComponent,
     CpfPipe,
     TelephonePipe,
-    CepPipe
+    CepPipe,
+    IconComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }
